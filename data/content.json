@@ -1,0 +1,201 @@
+{
+  "company": {
+    "name": "Zenith",
+    "tagline": "Digital Solutions for Modern Businesses",
+    "description": "We create exceptional digital experiences that drive growth and innovation."
+  },
+  "hero": {
+    "heading": "Build the Future, Today",
+    "subtitle": "Transform your vision into reality with our cutting-edge digital solutions and creative expertise.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "Learn More"
+  },
+  "about": {
+    "title": "About Us",
+    "intro": "Founded in 2020, Zenith has been at the forefront of digital innovation, helping businesses unlock their full potential through strategic design and technology.",
+    "mission": "Our mission is to empower organizations with elegant, scalable digital solutions that inspire growth and create lasting impact.",
+    "stats": [
+      {
+        "value": "500+",
+        "label": "Projects Completed"
+      },
+      {
+        "value": "50+",
+        "label": "Team Members"
+      },
+      {
+        "value": "98%",
+        "label": "Client Satisfaction"
+      },
+      {
+        "value": "15+",
+        "label": "Years Experience"
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive digital solutions tailored to your business needs",
+    "items": [
+      {
+        "id": "1",
+        "icon": "layout",
+        "title": "Web Design & Development",
+        "description": "Beautiful, responsive websites that convert visitors into customers."
+      },
+      {
+        "id": "2",
+        "icon": "palette",
+        "title": "Brand Identity",
+        "description": "Create a memorable brand that stands out in the market."
+      },
+      {
+        "id": "3",
+        "icon": "zap",
+        "title": "Performance Optimization",
+        "description": "Lightning-fast websites that keep users engaged and satisfied."
+      },
+      {
+        "id": "4",
+        "icon": "smartphone",
+        "title": "Mobile Apps",
+        "description": "Native and cross-platform mobile applications for iOS and Android."
+      },
+      {
+        "id": "5",
+        "icon": "bar-chart-2",
+        "title": "Analytics & Insights",
+        "description": "Data-driven strategies to maximize your ROI and growth."
+      },
+      {
+        "id": "6",
+        "icon": "shield",
+        "title": "Security & Compliance",
+        "description": "Enterprise-grade security for your digital assets."
+      }
+    ]
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "Showcasing our latest work and innovations",
+    "items": [
+      {
+        "id": "1",
+        "title": "EcoFlow Platform",
+        "description": "A sustainable energy management platform that reduces carbon footprint by 40%.",
+        "image": "https://images.unsplash.com/photo-1460925895917-adf4e565db73?w=800&h=500&fit=crop",
+        "technologies": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+        "link": "#"
+      },
+      {
+        "id": "2",
+        "title": "FinanceHub Dashboard",
+        "description": "Real-time financial analytics platform for wealth management and portfolio tracking.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+        "technologies": ["Next.js", "Python", "PostgreSQL", "D3.js"],
+        "link": "#"
+      },
+      {
+        "id": "3",
+        "title": "HealthSync App",
+        "description": "Innovative healthcare mobile application connecting patients with specialists worldwide.",
+        "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=500&fit=crop",
+        "technologies": ["React Native", "Firebase", "Redux", "GraphQL"],
+        "link": "#"
+      }
+    ]
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "Meet the talented people behind our success",
+    "members": [
+      {
+        "id": "1",
+        "name": "Sarah Chen",
+        "role": "CEO & Co-founder",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+        "bio": "Visionary leader with 15+ years in digital transformation.",
+        "social": {
+          "linkedin": "#",
+          "twitter": "#"
+        }
+      },
+      {
+        "id": "2",
+        "name": "Marcus Johnson",
+        "role": "Lead Designer",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+        "bio": "Award-winning designer crafting digital experiences.",
+        "social": {
+          "linkedin": "#",
+          "github": "#"
+        }
+      },
+      {
+        "id": "3",
+        "name": "Elena Rodriguez",
+        "role": "CTO & Co-founder",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+        "bio": "Tech innovator specializing in scalable architecture.",
+        "social": {
+          "linkedin": "#",
+          "github": "#"
+        }
+      },
+      {
+        "id": "4",
+        "name": "David Park",
+        "role": "Product Manager",
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+        "bio": "Strategic thinker focused on user-centric solutions.",
+        "social": {
+          "linkedin": "#",
+          "twitter": "#"
+        }
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "subtitle": "What our clients say about working with us",
+    "items": [
+      {
+        "id": "1",
+        "author": "Jennifer Williams",
+        "title": "Founder, TechStart Inc",
+        "content": "Zenith transformed our vision into reality. Their attention to detail and innovative approach exceeded our expectations. Highly recommended!",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop"
+      },
+      {
+        "id": "2",
+        "author": "Robert Chen",
+        "title": "CEO, Global Solutions",
+        "content": "Working with Zenith was a game-changer for our business. Their team is professional, creative, and delivers results consistently.",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop"
+      },
+      {
+        "id": "3",
+        "author": "Amanda Foster",
+        "title": "Marketing Director, Innovation Labs",
+        "content": "The platform they built has improved our efficiency by 60%. Their support is outstanding and they&apos;re always innovating.",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Let&apos;s discuss how we can help transform your business",
+    "email": "hello@zenith.dev",
+    "phone": "+1 (555) 123-4567",
+    "address": "123 Innovation Street, San Francisco, CA 94105"
+  },
+  "footer": {
+    "copyright": "© 2024 Zenith. All rights reserved.",
+    "social": {
+      "twitter": "https://twitter.com",
+      "linkedin": "https://linkedin.com",
+      "github": "https://github.com",
+      "instagram": "https://instagram.com"
+    }
+  }
+}
