@@ -11,128 +11,118 @@ interface TeamProps {
   members: TeamMember[];
 }
 
+const ringColors = [
+  'from-indigo-500 via-blue-500 to-purple-600',
+  'from-violet-500 via-purple-500 to-fuchsia-500',
+  'from-fuchsia-500 via-pink-500 to-rose-500',
+  'from-teal-500 via-cyan-500 to-indigo-500',
+];
+
 export function Team({ title, subtitle, members }: TeamProps) {
-  const getSocialIcon = (platform: string) => {
-    switch (platform) {
-      case 'linkedin':
-        return <Linkedin size={18} />;
-      case 'github':
-        return <Github size={18} />;
-      case 'twitter':
-        return <Twitter size={18} />;
-      default:
-        return null;
-    }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
-    <section id="team" className="relative py-24 overflow-hidden">
+    <section id="team" className="relative py-32 overflow-hidden">
+      {/* Bg glow */}
+      <div className="absolute inset-0 -z-10">
+        <div
+          className="absolute bottom-0 left-1/3 w-[500px] h-[400px] rounded-full opacity-25"
+          style={{ background: 'radial-gradient(ellipse, rgba(139,92,246,0.1) 0%, transparent 65%)' }}
+        />
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">{title}</h2>
-          <p className="text-foreground/70 text-lg mb-4">{subtitle}</p>
-          <div className="w-16 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+          <span className="section-label mb-5 inline-flex">The People</span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight mt-5 mb-4 text-foreground/90">{title}</h2>
+          <p className="text-foreground/45 text-base max-w-xl mx-auto mb-6">{subtitle}</p>
+          <div className="divider-gradient mx-auto" />
         </motion.div>
 
-        {/* Team Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-4 gap-8"
-        >
-          {members.map((member) => (
+        {/* Team grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {members.map((member, i) => (
             <motion.div
               key={member.id}
-              variants={cardVariants}
-              whileHover={{ y: -5 }}
-              className="glass p-6 rounded-xl text-center group"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.55, delay: i * 0.08 }}
+              viewport={{ once: true }}
+              className="group glass-card rounded-2xl p-7 text-center card-glow relative overflow-hidden"
             >
-              {/* Avatar */}
-              <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden ring-2 ring-indigo-600/30 group-hover:ring-purple-600/50 transition-all">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover"
-                />
+              {/* Subtle top glow */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent" />
+
+              {/* Avatar with gradient ring */}
+              <div className="relative w-24 h-24 mx-auto mb-5">
+                <div
+                  className={`absolute inset-0 rounded-full bg-gradient-to-br ${ringColors[i % ringColors.length]} p-[2px] opacity-70 group-hover:opacity-100 transition-opacity duration-300`}
+                >
+                  <div className="w-full h-full rounded-full bg-[#03040f]" />
+                </div>
+                <div className="absolute inset-[3px] rounded-full overflow-hidden">
+                  <Image src={member.image} alt={member.name} fill className="object-cover" />
+                </div>
               </div>
 
               {/* Info */}
-              <h3 className="text-lg font-semibold mb-1 text-foreground group-hover:gradient-text transition-all">
+              <h3 className="text-base font-bold text-foreground/90 mb-1 group-hover:gradient-text transition-all duration-300">
                 {member.name}
               </h3>
-              <p className="text-sm text-indigo-400 mb-3">
-                {member.role}
-              </p>
+              <p className="text-xs font-semibold text-indigo-400/80 uppercase tracking-wider mb-3">{member.role}</p>
+
               {member.bio && (
-                <p className="text-sm text-foreground/70 mb-4 leading-relaxed">
-                  {member.bio}
-                </p>
+                <p className="text-xs text-foreground/40 leading-relaxed mb-5">{member.bio}</p>
               )}
 
-              {/* Social Links */}
-              <div className="flex justify-center gap-3">
+              {/* Social links */}
+              <div className="flex justify-center gap-3 pt-4 border-t border-white/5">
                 {member.social.linkedin && (
                   <motion.a
-                    whileHover={{ scale: 1.2 }}
+                    whileHover={{ scale: 1.2, y: -2 }}
                     href={member.social.linkedin}
-                    className="text-foreground/60 hover:text-indigo-400 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-lg glass flex items-center justify-center text-foreground/40 hover:text-indigo-400 hover:bg-indigo-500/10 transition-all"
                   >
-                    {getSocialIcon('linkedin')}
+                    <Linkedin size={14} />
                   </motion.a>
                 )}
                 {member.social.github && (
                   <motion.a
-                    whileHover={{ scale: 1.2 }}
+                    whileHover={{ scale: 1.2, y: -2 }}
                     href={member.social.github}
-                    className="text-foreground/60 hover:text-purple-400 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-lg glass flex items-center justify-center text-foreground/40 hover:text-purple-400 hover:bg-purple-500/10 transition-all"
                   >
-                    {getSocialIcon('github')}
+                    <Github size={14} />
                   </motion.a>
                 )}
                 {member.social.twitter && (
                   <motion.a
-                    whileHover={{ scale: 1.2 }}
+                    whileHover={{ scale: 1.2, y: -2 }}
                     href={member.social.twitter}
-                    className="text-foreground/60 hover:text-sky-400 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 rounded-lg glass flex items-center justify-center text-foreground/40 hover:text-sky-400 hover:bg-sky-500/10 transition-all"
                   >
-                    {getSocialIcon('twitter')}
+                    <Twitter size={14} />
                   </motion.a>
                 )}
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
+

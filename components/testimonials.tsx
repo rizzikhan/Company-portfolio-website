@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Testimonial } from '@/types';
-import { Quote } from 'lucide-react';
+import { Star } from 'lucide-react';
 import Image from 'next/image';
 
 interface TestimonialsProps {
@@ -12,88 +12,81 @@ interface TestimonialsProps {
 }
 
 export function Testimonials({ title, subtitle, items }: TestimonialsProps) {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
-    <section className="relative py-24 overflow-hidden">
+    <section className="relative py-32 overflow-hidden">
+      {/* Bg glow */}
+      <div className="absolute inset-0 -z-10">
+        <div
+          className="absolute top-0 right-1/4 w-[500px] h-[400px] rounded-full opacity-20"
+          style={{ background: 'radial-gradient(ellipse, rgba(236,72,153,0.09) 0%, transparent 65%)' }}
+        />
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">{title}</h2>
-          <p className="text-foreground/70 text-lg mb-4">{subtitle}</p>
-          <div className="w-16 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+          <span className="section-label mb-5 inline-flex">Testimonials</span>
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight mt-5 mb-4 text-foreground/90">{title}</h2>
+          <p className="text-foreground/45 text-base max-w-xl mx-auto mb-6">{subtitle}</p>
+          <div className="divider-gradient mx-auto" />
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8"
-        >
-          {items.map((testimonial) => (
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {items.map((item, i) => (
             <motion.div
-              key={testimonial.id}
-              variants={cardVariants}
-              whileHover={{ y: -5 }}
-              className="glass p-8 rounded-xl flex flex-col"
+              key={item.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.55, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="group glass-card rounded-2xl p-7 flex flex-col card-glow relative overflow-hidden"
             >
-              {/* Quote Icon */}
-              <Quote size={32} className="text-indigo-400 mb-4" />
+              {/* Top accent line */}
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent group-hover:via-indigo-400/60 transition-all duration-300" />
 
-              {/* Content */}
-              <p className="text-foreground/80 italic mb-6 flex-grow leading-relaxed">
-                {`"${testimonial.content}"`}
+              {/* Stars */}
+              <div className="flex gap-1 mb-5">
+                {Array.from({ length: 5 }).map((_, si) => (
+                  <Star key={si} size={13} className="fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+
+              {/* Large decorative quote */}
+              <div
+                className="absolute top-6 right-6 text-7xl font-serif leading-none text-indigo-500/8 group-hover:text-indigo-500/15 transition-colors duration-300 select-none"
+                aria-hidden="true"
+              >
+                &ldquo;
+              </div>
+
+              {/* Quote text */}
+              <p className="text-foreground/55 text-sm leading-relaxed flex-grow italic mb-7">
+                &ldquo;{item.content}&rdquo;
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4 pt-6 border-t border-white/10">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden ring-2 ring-indigo-600/30">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.author}
-                    fill
-                    className="object-cover"
-                  />
+              <div className="flex items-center gap-3.5 pt-5 border-t border-white/6">
+                <div className="relative w-11 h-11 rounded-full overflow-hidden ring-2 ring-indigo-500/25 group-hover:ring-indigo-400/50 transition-all flex-shrink-0">
+                  <Image src={item.image} alt={item.author} fill className="object-cover" />
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">
-                    {testimonial.author}
-                  </p>
-                  <p className="text-sm text-foreground/60">
-                    {testimonial.title}
-                  </p>
+                  <p className="text-sm font-semibold text-foreground/85">{item.author}</p>
+                  <p className="text-xs text-foreground/40 mt-0.5">{item.title}</p>
                 </div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
